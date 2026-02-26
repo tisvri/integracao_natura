@@ -37,7 +37,7 @@ def get_participant_info(
     
     # 2. Searching protocol site from V1
     v1_payload = redcap.export_record_eav(record_id, "vsv1_arm_1")
-    co_centro_raw = str(v1_payload.get('demografia_centro')or '').strip()
+    co_centro_raw = str(v1_payload.get('dados_pessoais_site')or '').strip()
     co_centro = SITE_CODE_MAPPING.get(co_centro_raw)
     if not co_centro:
         raise RuntimeError(f"Could not map centro = {co_centro_raw!r} to Polotrial")

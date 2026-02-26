@@ -1,0 +1,530 @@
+2026-02-26 13:10:17,060 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:10:18,526 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:11:51,924 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:11:52,953 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:11:54,678 - INFO - Polotrial: authentication successful
+2026-02-26 13:14:06,234 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:14:07,390 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:14:08,822 - INFO - Polotrial: authentication successful
+2026-02-26 13:14:12,098 - INFO - Volunteer created: 93-1 -> id=3328
+2026-02-26 13:14:12,098 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:14:13,737 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:14:15,682 - INFO - DEBUG: Sending participant payload:
+{
+  "co_voluntario": 3328,
+  "co_protocolo": 2622,
+  "data_inclusao": "2026-02-23",
+  "id_participante": "93-1",
+  "numero_de_screening": "93-1",
+  "status_participante": "540",
+  "co_braco": 267,
+  "atualizar_agenda": "1",
+  "apagar_visitas_pendentes": "0"
+}
+2026-02-26 13:14:25,715 - INFO - DEBUG: Received participant response:
+{
+  "id": 3302,
+  "apagar_visitas_pendentes": 0,
+  "id_participante": "93-1",
+  "numero_de_screening": "93-1",
+  "co_protocolo": 2622,
+  "atualizar_agenda": 1,
+  "co_braco": 267,
+  "data_inclusao": "2026-02-23T00:00:00.000Z",
+  "status_participante": 540,
+  "co_voluntario": "3328",
+  "user_id_log": 4593
+}
+2026-02-26 13:14:25,716 - INFO - Participant created: id=3302
+2026-02-26 13:14:48,552 - INFO - VS/V1 updated (id=40225).
+2026-02-26 13:14:49,276 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:14:49,277 - INFO -  - ID: 645788 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: None | Check field: tcle_q6=2026-02-23 13:19 | Date field: tcle_q6=2026-02-23 13:19
+2026-02-26 13:14:49,277 - INFO -  - ID: 645789 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:14:49,277 - INFO -  - ID: 645790 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:14:49,277 - INFO -  - ID: 645791 | Proc: Registro de dados demográficos | Data exec: None | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:14:49,277 - INFO -  - ID: 645792 | Proc: Exame clínico/físico | Data exec: None | Check field: exame_fisico_dt=2026-02-23 13:49 | Date field: exame_fisico_dt=2026-02-23 13:49
+2026-02-26 13:14:49,277 - INFO -  - ID: 645793 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:14:49,277 - INFO -  - ID: 645794 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:14:49,277 - INFO -  - ID: 645795 | Proc: Questionário Sensorial | Data exec: None | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:14:49,277 - INFO -  - ID: 645796 | Proc: Questionário SF-36 | Data exec: None | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:14:49,277 - INFO -  - ID: 645797 | Proc: Questionário GAD-7 | Data exec: None | Check field: gad7_dt=2026-02-23 | Date field: gad7_dt=2026-02-23
+2026-02-26 13:14:49,278 - INFO -  - ID: 645798 | Proc: Questionário PHQ-9 | Data exec: None | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:14:49,278 - INFO -  - ID: 645799 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=N/A | Date field: wpai_dt=N/A
+2026-02-26 13:14:49,278 - INFO -  - ID: 645800 | Proc: Consulta médica | Data exec: None | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:14:49,278 - INFO -  - ID: 645801 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:14:49,278 - INFO -  - ID: 645802 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:14:49,278 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:14:49,278 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:14:49,278 - INFO -   Matched with mapping: 13
+2026-02-26 13:14:49,278 - INFO -   Unmatched: 2
+2026-02-26 13:14:49,278 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:14:49,278 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:14:49,278 - WARNING -   - 'Reembolso'
+2026-02-26 13:14:49,986 - INFO - ✅s Procedure updated successfully. procedure_id=645788 date=2026-02-23
+2026-02-26 13:14:49,986 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:14:49,988 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:14:49,990 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:14:49,992 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:14:50,703 - INFO - ✅s Procedure updated successfully. procedure_id=645791 date=2026-02-23
+2026-02-26 13:14:51,320 - INFO - ✅s Procedure updated successfully. procedure_id=645792 date=2026-02-23
+2026-02-26 13:14:51,322 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:14:51,323 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:14:51,325 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:14:51,327 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:14:51,948 - INFO - ✅s Procedure updated successfully. procedure_id=645795 date=2026-02-23
+2026-02-26 13:14:52,682 - INFO - ✅s Procedure updated successfully. procedure_id=645796 date=2026-02-23
+2026-02-26 13:14:53,290 - INFO - ✅s Procedure updated successfully. procedure_id=645797 date=2026-02-23
+2026-02-26 13:14:53,892 - INFO - ✅s Procedure updated successfully. procedure_id=645798 date=2026-02-23
+2026-02-26 13:14:53,894 - INFO - No date in REDCap for procedure 'Questionário WPAI-GH' (check_field=wpai_dt)
+2026-02-26 13:14:53,896 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:14:53,898 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:14:53,899 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:14:53,901 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:14:53,902 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:14:53,904 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:14:53,905 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:14:53,906 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:14:53,908 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:14:53,909 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:14:53,909 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:14:53,911 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:14:53,911 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:14:53,912 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:14:54,595 - INFO - ✅s Procedure updated successfully. procedure_id=645800 date=2026-02-23
+2026-02-26 13:14:54,597 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:14:54,597 - INFO - V1 procedures synchronized: 8/32
+2026-02-26 13:14:54,598 - INFO - V1: consulta_nome_medico vazio; não é possível atribuir executor (Consulta Médica).
+2026-02-26 13:14:54,598 - INFO - V1 sync completed for record_id=93-1
+2026-02-26 13:25:01,004 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:25:02,182 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:25:03,467 - INFO - Polotrial: authentication successful
+2026-02-26 13:25:04,285 - INFO - Volunteer exists: 93-1 -> id=3328
+2026-02-26 13:25:04,285 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:25:05,104 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:25:06,640 - INFO - Participant exists: id=3302
+2026-02-26 13:25:28,356 - INFO - VS/V1 already up to date (id=40225).
+2026-02-26 13:25:29,041 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:25:29,041 - INFO -  - ID: 645788 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: 2026-02-23T00:00:00.000Z | Check field: tcle_q6=2026-02-23 13:19 | Date field: tcle_q6=2026-02-23 13:19
+2026-02-26 13:25:29,041 - INFO -  - ID: 645789 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:25:29,041 - INFO -  - ID: 645790 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:25:29,042 - INFO -  - ID: 645791 | Proc: Registro de dados demográficos | Data exec: 2026-02-23T00:00:00.000Z | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:25:29,042 - INFO -  - ID: 645792 | Proc: Exame clínico/físico | Data exec: 2026-02-23T00:00:00.000Z | Check field: exame_fisico_dt=2026-02-23 13:49 | Date field: exame_fisico_dt=2026-02-23 13:49
+2026-02-26 13:25:29,042 - INFO -  - ID: 645793 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:25:29,042 - INFO -  - ID: 645794 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:25:29,042 - INFO -  - ID: 645795 | Proc: Questionário Sensorial | Data exec: 2026-02-23T00:00:00.000Z | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:25:29,042 - INFO -  - ID: 645796 | Proc: Questionário SF-36 | Data exec: 2026-02-23T00:00:00.000Z | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:25:29,042 - INFO -  - ID: 645797 | Proc: Questionário GAD-7 | Data exec: 2026-02-23T00:00:00.000Z | Check field: gad7_dt=2026-02-23 | Date field: gad7_dt=2026-02-23
+2026-02-26 13:25:29,042 - INFO -  - ID: 645798 | Proc: Questionário PHQ-9 | Data exec: 2026-02-23T00:00:00.000Z | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:25:29,043 - INFO -  - ID: 645799 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=N/A | Date field: wpai_dt=N/A
+2026-02-26 13:25:29,043 - INFO -  - ID: 645800 | Proc: Consulta médica | Data exec: 2026-02-23T00:00:00.000Z | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:25:29,043 - INFO -  - ID: 645801 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:25:29,043 - INFO -  - ID: 645802 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:25:29,043 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:25:29,043 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:25:29,043 - INFO -   Matched with mapping: 13
+2026-02-26 13:25:29,043 - INFO -   Unmatched: 2
+2026-02-26 13:25:29,043 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:25:29,043 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:25:29,043 - WARNING -   - 'Reembolso'
+2026-02-26 13:25:29,045 - INFO - No procedure to sync for pattern Termo de Consentimento Livre e Esclarecido
+2026-02-26 13:25:29,045 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:25:29,045 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:25:29,046 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:25:29,046 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:25:29,047 - INFO - No procedure to sync for pattern Registro de dados demográficos
+2026-02-26 13:25:29,047 - INFO - No procedure to sync for pattern Exame clínico/físico
+2026-02-26 13:25:29,048 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:25:29,048 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:25:29,049 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:25:29,049 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:25:29,050 - INFO - No procedure to sync for pattern Questionário Sensorial
+2026-02-26 13:25:29,050 - INFO - No procedure to sync for pattern Questionário SF-36
+2026-02-26 13:25:29,051 - INFO - No procedure to sync for pattern Questionário GAD-7
+2026-02-26 13:25:29,051 - INFO - No procedure to sync for pattern Questionário PHQ-9
+2026-02-26 13:25:29,052 - INFO - No date in REDCap for procedure 'Questionário WPAI-GH' (check_field=wpai_dt)
+2026-02-26 13:25:29,052 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:25:29,053 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:25:29,053 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:25:29,053 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:25:29,054 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:25:29,054 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:25:29,055 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:25:29,055 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:25:29,056 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:25:29,056 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:25:29,057 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:25:29,057 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:25:29,058 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:25:29,058 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:25:29,059 - INFO - No procedure to sync for pattern Consulta médica
+2026-02-26 13:25:29,059 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:25:29,059 - INFO - V1 procedures synchronized: 0/32
+2026-02-26 13:25:29,060 - INFO - V1: consulta_dt vazio; não é possível atribuir executor (Consulta Médica).
+2026-02-26 13:25:29,060 - INFO - V1 sync completed for record_id=93-1
+2026-02-26 13:27:25,753 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:27:26,828 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:27:28,061 - INFO - Polotrial: authentication successful
+2026-02-26 13:27:28,771 - INFO - Volunteer exists: 93-1 -> id=3328
+2026-02-26 13:27:28,771 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:27:29,590 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:27:31,126 - INFO - Participant exists: id=3302
+2026-02-26 13:27:53,040 - INFO - VS/V1 already up to date (id=40225).
+2026-02-26 13:27:53,761 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:27:53,761 - INFO -  - ID: 645788 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: 2026-02-23T00:00:00.000Z | Check field: tcle_q6=2026-02-23 13:19 | Date field: tcle_q6=2026-02-23 13:19
+2026-02-26 13:27:53,761 - INFO -  - ID: 645789 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:27:53,762 - INFO -  - ID: 645790 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:27:53,762 - INFO -  - ID: 645791 | Proc: Registro de dados demográficos | Data exec: 2026-02-23T00:00:00.000Z | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:27:53,762 - INFO -  - ID: 645792 | Proc: Exame clínico/físico | Data exec: 2026-02-23T00:00:00.000Z | Check field: exame_fisico_dt=2026-02-23 13:49 | Date field: exame_fisico_dt=2026-02-23 13:49
+2026-02-26 13:27:53,762 - INFO -  - ID: 645793 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:27:53,762 - INFO -  - ID: 645794 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:27:53,762 - INFO -  - ID: 645795 | Proc: Questionário Sensorial | Data exec: 2026-02-23T00:00:00.000Z | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:27:53,762 - INFO -  - ID: 645796 | Proc: Questionário SF-36 | Data exec: 2026-02-23T00:00:00.000Z | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:27:53,763 - INFO -  - ID: 645797 | Proc: Questionário GAD-7 | Data exec: 2026-02-23T00:00:00.000Z | Check field: gad7_dt=2026-02-23 | Date field: gad7_dt=2026-02-23
+2026-02-26 13:27:53,763 - INFO -  - ID: 645798 | Proc: Questionário PHQ-9 | Data exec: 2026-02-23T00:00:00.000Z | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:27:53,763 - INFO -  - ID: 645799 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=N/A | Date field: wpai_dt=N/A
+2026-02-26 13:27:53,763 - INFO -  - ID: 645800 | Proc: Consulta médica | Data exec: 2026-02-23T00:00:00.000Z | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:27:53,763 - INFO -  - ID: 645801 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:27:53,763 - INFO -  - ID: 645802 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:27:53,763 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:27:53,763 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:27:53,763 - INFO -   Matched with mapping: 13
+2026-02-26 13:27:53,763 - INFO -   Unmatched: 2
+2026-02-26 13:27:53,763 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:27:53,763 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:27:53,763 - WARNING -   - 'Reembolso'
+2026-02-26 13:27:53,765 - INFO - No procedure to sync for pattern Termo de Consentimento Livre e Esclarecido
+2026-02-26 13:27:53,765 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:27:53,766 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:27:53,766 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:27:53,767 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:27:53,768 - INFO - No procedure to sync for pattern Registro de dados demográficos
+2026-02-26 13:27:53,768 - INFO - No procedure to sync for pattern Exame clínico/físico
+2026-02-26 13:27:53,769 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:27:53,770 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:27:53,770 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:27:53,771 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:27:53,771 - INFO - No procedure to sync for pattern Questionário Sensorial
+2026-02-26 13:27:53,771 - INFO - No procedure to sync for pattern Questionário SF-36
+2026-02-26 13:27:53,772 - INFO - No procedure to sync for pattern Questionário GAD-7
+2026-02-26 13:27:53,772 - INFO - No procedure to sync for pattern Questionário PHQ-9
+2026-02-26 13:27:53,773 - INFO - No date in REDCap for procedure 'Questionário WPAI-GH' (check_field=wpai_dt)
+2026-02-26 13:27:53,773 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:27:53,774 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:27:53,774 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:27:53,775 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:27:53,775 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:27:53,776 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:27:53,776 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:27:53,777 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:27:53,777 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:27:53,777 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:27:53,778 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:27:53,778 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:27:53,779 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:27:53,779 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:27:53,780 - INFO - No procedure to sync for pattern Consulta médica
+2026-02-26 13:27:53,780 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:27:53,780 - INFO - V1 procedures synchronized: 0/32
+2026-02-26 13:27:53,781 - WARNING - V1: procedimento 'Consulta Médica' não encontrado na visita (PoloTrial).
+2026-02-26 13:27:53,781 - INFO - V1 sync completed for record_id=93-1
+2026-02-26 13:33:58,500 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:34:00,248 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:34:01,579 - INFO - Polotrial: authentication successful
+2026-02-26 13:34:02,294 - INFO - Volunteer exists: 93-1 -> id=3328
+2026-02-26 13:34:02,294 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:34:03,113 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:34:04,751 - INFO - Participant exists: id=3302
+2026-02-26 13:34:26,768 - INFO - VS/V1 already up to date (id=40225).
+2026-02-26 13:34:27,492 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:34:27,492 - INFO -  - ID: 645788 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: 2026-02-23T00:00:00.000Z | Check field: tcle_q6=2026-02-23 13:19 | Date field: tcle_q6=2026-02-23 13:19
+2026-02-26 13:34:27,492 - INFO -  - ID: 645789 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:34:27,492 - INFO -  - ID: 645790 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:34:27,492 - INFO -  - ID: 645791 | Proc: Registro de dados demográficos | Data exec: 2026-02-23T00:00:00.000Z | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:34:27,492 - INFO -  - ID: 645792 | Proc: Exame clínico/físico | Data exec: 2026-02-23T00:00:00.000Z | Check field: exame_fisico_dt=2026-02-23 13:49 | Date field: exame_fisico_dt=2026-02-23 13:49
+2026-02-26 13:34:27,492 - INFO -  - ID: 645793 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:34:27,492 - INFO -  - ID: 645794 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:34:27,492 - INFO -  - ID: 645795 | Proc: Questionário Sensorial | Data exec: 2026-02-23T00:00:00.000Z | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:34:27,492 - INFO -  - ID: 645796 | Proc: Questionário SF-36 | Data exec: 2026-02-23T00:00:00.000Z | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:34:27,493 - INFO -  - ID: 645797 | Proc: Questionário GAD-7 | Data exec: 2026-02-23T00:00:00.000Z | Check field: gad7_dt=2026-02-23 | Date field: gad7_dt=2026-02-23
+2026-02-26 13:34:27,493 - INFO -  - ID: 645798 | Proc: Questionário PHQ-9 | Data exec: 2026-02-23T00:00:00.000Z | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:34:27,493 - INFO -  - ID: 645799 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=N/A | Date field: wpai_dt=N/A
+2026-02-26 13:34:27,493 - INFO -  - ID: 645800 | Proc: Consulta médica | Data exec: None | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:34:27,493 - INFO -  - ID: 645801 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:34:27,493 - INFO -  - ID: 645802 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:34:27,493 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:34:27,493 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:34:27,493 - INFO -   Matched with mapping: 13
+2026-02-26 13:34:27,493 - INFO -   Unmatched: 2
+2026-02-26 13:34:27,493 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:34:27,493 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:34:27,493 - WARNING -   - 'Reembolso'
+2026-02-26 13:34:27,494 - INFO - No procedure to sync for pattern Termo de Consentimento Livre e Esclarecido
+2026-02-26 13:34:27,494 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:34:27,495 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:34:27,496 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:34:27,497 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:34:27,497 - INFO - No procedure to sync for pattern Registro de dados demográficos
+2026-02-26 13:34:27,498 - INFO - No procedure to sync for pattern Exame clínico/físico
+2026-02-26 13:34:27,498 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:34:27,499 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:34:27,499 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:34:27,500 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:34:27,500 - INFO - No procedure to sync for pattern Questionário Sensorial
+2026-02-26 13:34:27,501 - INFO - No procedure to sync for pattern Questionário SF-36
+2026-02-26 13:34:27,501 - INFO - No procedure to sync for pattern Questionário GAD-7
+2026-02-26 13:34:27,502 - INFO - No procedure to sync for pattern Questionário PHQ-9
+2026-02-26 13:34:27,502 - INFO - No date in REDCap for procedure 'Questionário WPAI-GH' (check_field=wpai_dt)
+2026-02-26 13:34:27,503 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:34:27,503 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:34:27,504 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:34:27,504 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:34:27,504 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:34:27,505 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:34:27,505 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:34:27,506 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:34:27,506 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:34:27,507 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:34:27,507 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:34:27,508 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:34:27,508 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:34:27,508 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:34:28,202 - INFO - ✅s Procedure updated successfully. procedure_id=645800 date=2026-02-23
+2026-02-26 13:34:28,204 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:34:28,204 - INFO - V1 procedures synchronized: 1/32
+2026-02-26 13:34:28,206 - WARNING - V1: procedimento 'Consulta Médica' não encontrado na visita (PoloTrial).
+2026-02-26 13:34:28,206 - INFO - V1 sync completed for record_id=93-1
+2026-02-26 13:37:06,521 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:37:07,521 - INFO - REDCap: exported record 93-1 for event vsv1_arm_1 with 389 fields
+2026-02-26 13:37:08,767 - INFO - Polotrial: authentication successful
+2026-02-26 13:37:09,482 - INFO - Volunteer exists: 93-1 -> id=3328
+2026-02-26 13:37:09,482 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:37:10,301 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:37:11,735 - INFO - Participant exists: id=3302
+2026-02-26 13:37:33,443 - INFO - VS/V1 already up to date (id=40225).
+2026-02-26 13:37:34,167 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:37:34,167 - INFO -  - ID: 645788 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: 2026-02-23T00:00:00.000Z | Check field: tcle_q6=2026-02-23 13:19 | Date field: tcle_q6=2026-02-23 13:19
+2026-02-26 13:37:34,167 - INFO -  - ID: 645789 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:37:34,167 - INFO -  - ID: 645790 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:37:34,167 - INFO -  - ID: 645791 | Proc: Registro de dados demográficos | Data exec: 2026-02-23T00:00:00.000Z | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645792 | Proc: Exame clínico/físico | Data exec: 2026-02-23T00:00:00.000Z | Check field: exame_fisico_dt=2026-02-23 13:49 | Date field: exame_fisico_dt=2026-02-23 13:49
+2026-02-26 13:37:34,168 - INFO -  - ID: 645793 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:37:34,168 - INFO -  - ID: 645794 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:37:34,168 - INFO -  - ID: 645795 | Proc: Questionário Sensorial | Data exec: 2026-02-23T00:00:00.000Z | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645796 | Proc: Questionário SF-36 | Data exec: 2026-02-23T00:00:00.000Z | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645797 | Proc: Questionário GAD-7 | Data exec: 2026-02-23T00:00:00.000Z | Check field: gad7_dt=2026-02-23 | Date field: gad7_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645798 | Proc: Questionário PHQ-9 | Data exec: 2026-02-23T00:00:00.000Z | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645799 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=N/A | Date field: wpai_dt=N/A
+2026-02-26 13:37:34,168 - INFO -  - ID: 645800 | Proc: Consulta médica | Data exec: 2026-02-23T00:00:00.000Z | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:37:34,168 - INFO -  - ID: 645801 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:37:34,168 - INFO -  - ID: 645802 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:37:34,168 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:37:34,168 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:37:34,169 - INFO -   Matched with mapping: 13
+2026-02-26 13:37:34,169 - INFO -   Unmatched: 2
+2026-02-26 13:37:34,169 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:37:34,169 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:37:34,169 - WARNING -   - 'Reembolso'
+2026-02-26 13:37:34,170 - INFO - No procedure to sync for pattern Termo de Consentimento Livre e Esclarecido
+2026-02-26 13:37:34,170 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:37:34,170 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:37:34,171 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:37:34,171 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:37:34,172 - INFO - No procedure to sync for pattern Registro de dados demográficos
+2026-02-26 13:37:34,172 - INFO - No procedure to sync for pattern Exame clínico/físico
+2026-02-26 13:37:34,173 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:37:34,174 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:37:34,174 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:37:34,175 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:37:34,175 - INFO - No procedure to sync for pattern Questionário Sensorial
+2026-02-26 13:37:34,176 - INFO - No procedure to sync for pattern Questionário SF-36
+2026-02-26 13:37:34,176 - INFO - No procedure to sync for pattern Questionário GAD-7
+2026-02-26 13:37:34,177 - INFO - No procedure to sync for pattern Questionário PHQ-9
+2026-02-26 13:37:34,177 - INFO - No date in REDCap for procedure 'Questionário WPAI-GH' (check_field=wpai_dt)
+2026-02-26 13:37:34,178 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:37:34,178 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:37:34,179 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:37:34,179 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:37:34,180 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:37:34,180 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:37:34,181 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:37:34,181 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:37:34,181 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:37:34,182 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:37:34,182 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:37:34,183 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:37:34,183 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:37:34,184 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:37:34,185 - INFO - No procedure to sync for pattern Consulta médica
+2026-02-26 13:37:34,185 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:37:34,185 - INFO - V1 procedures synchronized: 0/32
+2026-02-26 13:37:36,108 - INFO - V1: executor atribuído em Consulta Médica. procedure_id=645800 executor_id=319 response_id=16868
+2026-02-26 13:37:36,108 - INFO - V1 sync completed for record_id=93-1
+2026-02-26 13:40:00,248 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:40:01,310 - INFO - REDCap: exported record 93-2 for event vsv1_arm_1 with 385 fields
+2026-02-26 13:40:02,641 - INFO - Polotrial: authentication successful
+2026-02-26 13:40:05,508 - INFO - Volunteer created: 93-2 -> id=3329
+2026-02-26 13:40:05,508 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:40:06,328 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:40:08,272 - INFO - DEBUG: Sending participant payload:
+{
+  "co_voluntario": 3329,
+  "co_protocolo": 2622,
+  "data_inclusao": "2026-02-23",
+  "id_participante": "93-2",
+  "numero_de_screening": "93-2",
+  "status_participante": "540",
+  "co_braco": 267,
+  "atualizar_agenda": "1",
+  "apagar_visitas_pendentes": "0"
+}
+2026-02-26 13:40:17,079 - INFO - DEBUG: Received participant response:
+{
+  "id": 3303,
+  "apagar_visitas_pendentes": 0,
+  "id_participante": "93-2",
+  "numero_de_screening": "93-2",
+  "co_protocolo": 2622,
+  "atualizar_agenda": 1,
+  "co_braco": 267,
+  "data_inclusao": "2026-02-23T00:00:00.000Z",
+  "status_participante": 540,
+  "co_voluntario": "3329",
+  "user_id_log": 4593
+}
+2026-02-26 13:40:17,079 - INFO - Participant created: id=3303
+2026-02-26 13:40:39,504 - INFO - VS/V1 updated (id=40226).
+2026-02-26 13:40:40,229 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:40:40,229 - INFO -  - ID: 645803 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: None | Check field: tcle_q6=2026-02-23 14:02 | Date field: tcle_q6=2026-02-23 14:02
+2026-02-26 13:40:40,229 - INFO -  - ID: 645804 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: =N/A | Date field: =N/A
+2026-02-26 13:40:40,229 - INFO -  - ID: 645805 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:40:40,229 - INFO -  - ID: 645806 | Proc: Registro de dados demográficos | Data exec: None | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:40:40,229 - INFO -  - ID: 645807 | Proc: Exame clínico/físico | Data exec: None | Check field: exame_fisico_dt=2026-02-23 14:14 | Date field: exame_fisico_dt=2026-02-23 14:14
+2026-02-26 13:40:40,229 - INFO -  - ID: 645808 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:40:40,230 - INFO -  - ID: 645809 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:40:40,230 - INFO -  - ID: 645810 | Proc: Questionário Sensorial | Data exec: None | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:40:40,230 - INFO -  - ID: 645811 | Proc: Questionário SF-36 | Data exec: None | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:40:40,230 - INFO -  - ID: 645812 | Proc: Questionário GAD-7 | Data exec: None | Check field: gad7_dt=N/A | Date field: gad7_dt=N/A
+2026-02-26 13:40:40,230 - INFO -  - ID: 645813 | Proc: Questionário PHQ-9 | Data exec: None | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:40:40,230 - INFO -  - ID: 645814 | Proc: Questionário WPAI-GH | Data exec: None | Check field: wpai_dt=2026-02-23 | Date field: wpai_dt=2026-02-23
+2026-02-26 13:40:40,230 - INFO -  - ID: 645815 | Proc: Consulta médica | Data exec: None | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:40:40,230 - INFO -  - ID: 645816 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:40:40,230 - INFO -  - ID: 645817 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:40:40,230 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:40:40,230 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:40:40,230 - INFO -   Matched with mapping: 13
+2026-02-26 13:40:40,230 - INFO -   Unmatched: 2
+2026-02-26 13:40:40,230 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:40:40,230 - WARNING -   - 'Exame de gravidez (urina)'
+2026-02-26 13:40:40,231 - WARNING -   - 'Reembolso'
+2026-02-26 13:40:40,938 - INFO - ✅s Procedure updated successfully. procedure_id=645803 date=2026-02-23
+2026-02-26 13:40:40,938 - WARNING - Invalid procedure config: {'procedure_name': 'Avaliação dos critérios de elegibilidade', 'redcap_check_field': '', 'redcap_date_field': ''}. Skipping...
+2026-02-26 13:40:40,941 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:40:40,943 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:40:40,943 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:40:41,655 - INFO - ✅s Procedure updated successfully. procedure_id=645806 date=2026-02-23
+2026-02-26 13:40:42,372 - INFO - ✅s Procedure updated successfully. procedure_id=645807 date=2026-02-23
+2026-02-26 13:40:42,375 - INFO - No procedure to sync for pattern Exame de gravidez (urina)
+2026-02-26 13:40:42,377 - INFO - No procedure to sync for pattern Orientações sobre a utilização do(s) cosmético(s)
+2026-02-26 13:40:42,377 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:40:42,378 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:40:43,088 - INFO - ✅s Procedure updated successfully. procedure_id=645810 date=2026-02-23
+2026-02-26 13:40:43,805 - INFO - ✅s Procedure updated successfully. procedure_id=645811 date=2026-02-23
+2026-02-26 13:40:43,808 - INFO - No date in REDCap for procedure 'Questionário GAD-7' (check_field=gad7_dt)
+2026-02-26 13:40:44,522 - INFO - ✅s Procedure updated successfully. procedure_id=645813 date=2026-02-23
+2026-02-26 13:40:45,136 - INFO - ✅s Procedure updated successfully. procedure_id=645814 date=2026-02-23
+2026-02-26 13:40:45,139 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:40:45,140 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:40:45,141 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:40:45,141 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:40:45,142 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:40:45,142 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:40:45,143 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante (Escala Likert de 5 pontos)
+2026-02-26 13:40:45,143 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:40:45,144 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento (Escala de Glogau)
+2026-02-26 13:40:45,144 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:40:45,145 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:40:45,145 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)
+2026-02-26 13:40:45,146 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)
+2026-02-26 13:40:45,146 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)
+2026-02-26 13:40:45,853 - INFO - ✅s Procedure updated successfully. procedure_id=645815 date=2026-02-23
+2026-02-26 13:40:45,856 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:40:45,856 - INFO - V1 procedures synchronized: 8/32
+2026-02-26 13:40:48,004 - INFO - V1: executor atribuído em Consulta Médica. procedure_id=645815 executor_id=319 response_id=16869
+2026-02-26 13:40:48,004 - INFO - V1 sync completed for record_id=93-2
+2026-02-26 13:48:42,343 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-26 13:48:43,450 - INFO - REDCap: exported record 93-2 for event vsv1_arm_1 with 385 fields
+2026-02-26 13:48:45,087 - INFO - Polotrial: authentication successful
+2026-02-26 13:48:45,905 - INFO - Volunteer exists: 93-2 -> id=3329
+2026-02-26 13:48:45,906 - INFO - DEBUG: Searching protocol - co_centro=67, apelido_protocolo=NATURA
+2026-02-26 13:48:46,827 - INFO - Protocol found: id=2622 (site=67)
+2026-02-26 13:48:48,363 - INFO - Participant exists: id=3303
+2026-02-26 13:49:10,071 - INFO - VS/V1 already up to date (id=40226).
+2026-02-26 13:49:10,795 - INFO - DEBUG: Available procedures in VS/V1:
+2026-02-26 13:49:10,796 - INFO -  - ID: 645803 | Proc: Termo de Consentimento Livre e Esclarecido | Data exec: 2026-02-23T00:00:00.000Z | Check field: tcle_q6=2026-02-23 14:02 | Date field: tcle_q6=2026-02-23 14:02
+2026-02-26 13:49:10,796 - INFO -  - ID: 645804 | Proc: Avaliação dos critérios de elegibilidade | Data exec: None | Check field: elegibilidade_q1=Sim | Date field: elegibilidade_dt=2026-02-23
+2026-02-26 13:49:10,796 - INFO -  - ID: 645805 | Proc: Registro de dados de histórico médico e estado menopausal | Data exec: None | Check field: historico_medico_dt=N/A | Date field: historico_medico_dt=N/A
+2026-02-26 13:49:10,796 - INFO -  - ID: 645806 | Proc: Registro de dados demográficos | Data exec: 2026-02-23T00:00:00.000Z | Check field: dados_sociodemograficos_dt=2026-02-23 | Date field: dados_sociodemograficos_dt=2026-02-23
+2026-02-26 13:49:10,796 - INFO -  - ID: 645807 | Proc: Exame clínico/físico | Data exec: 2026-02-23T00:00:00.000Z | Check field: exame_fisico_dt=2026-02-23 14:14 | Date field: exame_fisico_dt=2026-02-23 14:14
+2026-02-26 13:49:10,796 - INFO -  - ID: 645808 | Proc: Exame de gravidez (urina) | Data exec: None | Check field: teste_gravidez_q2=2026-02-23 | Date field: teste_gravidez_dt=2026-02-23
+2026-02-26 13:49:10,796 - INFO -  - ID: 645809 | Proc: Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa | Data exec: None | Check field: medicacao_dt=N/A | Date field: medicacao_dt=N/A
+2026-02-26 13:49:10,796 - INFO -  - ID: 645810 | Proc: Questionário Sensorial | Data exec: 2026-02-23T00:00:00.000Z | Check field: sensorial_dt=2026-02-23 | Date field: sensorial_dt=2026-02-23
+2026-02-26 13:49:10,796 - INFO -  - ID: 645811 | Proc: Questionário SF-36 | Data exec: 2026-02-23T00:00:00.000Z | Check field: sf36_dt=2026-02-23 | Date field: sf36_dt=2026-02-23
+2026-02-26 13:49:10,796 - INFO -  - ID: 645812 | Proc: Questionário GAD-7 | Data exec: None | Check field: gad7_dt=N/A | Date field: gad7_dt=N/A
+2026-02-26 13:49:10,797 - INFO -  - ID: 645813 | Proc: Questionário PHQ-9 | Data exec: 2026-02-23T00:00:00.000Z | Check field: phq9_dt=2026-02-23 | Date field: phq9_dt=2026-02-23
+2026-02-26 13:49:10,797 - INFO -  - ID: 645814 | Proc: Questionário WPAI-GH | Data exec: 2026-02-23T00:00:00.000Z | Check field: wpai_dt=2026-02-23 | Date field: wpai_dt=2026-02-23
+2026-02-26 13:49:10,797 - INFO -  - ID: 645815 | Proc: Consulta médica | Data exec: 2026-02-23T00:00:00.000Z | Check field: consulta_nome_medico=Dra. Andreia Castanheiro da Costa | Date field: consulta_dt=2026-02-23
+2026-02-26 13:49:10,797 - INFO -  - ID: 645816 | Proc: Reconsentimento | Data exec: None | Check field: tcle_q1=Consentimento | Date field: reconsentimento_dt=N/A
+2026-02-26 13:49:10,797 - INFO -  - ID: 645817 | Proc: Reembolso | Data exec: None | Check field: None=N/A | Date field: None=N/A
+2026-02-26 13:49:10,797 - INFO - DEBUG: Procedure mapping summary:
+2026-02-26 13:49:10,797 - INFO -   Total procedures in PoloTrial: 15
+2026-02-26 13:49:10,797 - INFO -   Matched with mapping: 14
+2026-02-26 13:49:10,797 - INFO -   Unmatched: 1
+2026-02-26 13:49:10,797 - WARNING - DEBUG: Unmatched procedures (no mapping found):
+2026-02-26 13:49:10,797 - WARNING -   - 'Reembolso'
+2026-02-26 13:49:10,798 - INFO - No procedure to sync for pattern Termo de Consentimento Livre e Esclarecido
+2026-02-26 13:49:11,506 - INFO - ✅s Procedure updated successfully. procedure_id=645804 date=2026-02-23
+2026-02-26 13:49:11,508 - INFO - No procedure to sync for pattern Revisão dos critérios de elegibilidade
+2026-02-26 13:49:11,510 - INFO - No procedure to sync for pattern Randomização
+2026-02-26 13:49:11,510 - INFO - No date in REDCap for procedure 'Registro de dados de histórico médico e estado menopausal' (check_field=historico_medico_dt)
+2026-02-26 13:49:11,511 - INFO - No procedure to sync for pattern Registro de dados demográficos
+2026-02-26 13:49:11,511 - INFO - No procedure to sync for pattern Exame clínico/físico
+2026-02-26 13:49:12,222 - INFO - ✅s Procedure updated successfully. procedure_id=645808 date=2026-02-23
+2026-02-26 13:49:12,224 - INFO - No procedure to sync for pattern Orientações sobre a utilização do\(s\) cosmético\(s\)
+2026-02-26 13:49:12,226 - INFO - No procedure to sync for pattern Registro de eventos adversos
+2026-02-26 13:49:12,227 - INFO - No date in REDCap for procedure 'Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa' (check_field=medicacao_dt)
+2026-02-26 13:49:12,228 - INFO - No procedure to sync for pattern Questionário Sensorial
+2026-02-26 13:49:12,228 - INFO - No procedure to sync for pattern Questionário SF-36
+2026-02-26 13:49:12,229 - INFO - No date in REDCap for procedure 'Questionário GAD-7' (check_field=gad7_dt)
+2026-02-26 13:49:12,229 - INFO - No procedure to sync for pattern Questionário PHQ-9
+2026-02-26 13:49:12,230 - INFO - No procedure to sync for pattern Questionário WPAI-GH
+2026-02-26 13:49:12,230 - INFO - No procedure to sync for pattern Questionário WHOQOL
+2026-02-26 13:49:12,231 - INFO - No procedure to sync for pattern Questionário referente à Escala de Rosenberg adaptada
+2026-02-26 13:49:12,231 - INFO - No procedure to sync for pattern Corneometria
+2026-02-26 13:49:12,232 - INFO - No procedure to sync for pattern Cutometria
+2026-02-26 13:49:12,232 - INFO - No procedure to sync for pattern Evaporimetria
+2026-02-26 13:49:12,233 - INFO - No procedure to sync for pattern Avaliação fotográfica
+2026-02-26 13:49:12,233 - INFO - No procedure to sync for pattern Avaliação de satisfação da participante \(Escala Likert de 5 pontos\)
+2026-02-26 13:49:12,233 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento \(Escala de Glogau\)
+2026-02-26 13:49:12,234 - INFO - No procedure to sync for pattern Gravidade de fotoenvelhecimento \(Escala de Glogau\)
+2026-02-26 13:49:12,234 - INFO - No procedure to sync for pattern Tape Stripping para avaliação por lipidômica
+2026-02-26 13:49:12,235 - INFO - No procedure to sync for pattern Biópsia para histopatologia e imunohistoquímica/imunofluorescência
+2026-02-26 13:49:12,235 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador \(escala IGA para pigmentação\)
+2026-02-26 13:49:12,236 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pelo pesquisador \(escala visual para ressecamento\)
+2026-02-26 13:49:12,237 - INFO - No procedure to sync for pattern Avaliação clínica subjetiva realizada pela participante \(escala visual analógica para ressecamento\)
+2026-02-26 13:49:12,237 - INFO - No procedure to sync for pattern Consulta médica
+2026-02-26 13:49:12,238 - INFO - No date in REDCap for procedure 'Reconsentimento' (check_field=tcle_q1)
+2026-02-26 13:49:12,238 - INFO - V1 procedures synchronized: 2/32
+2026-02-26 13:49:13,553 - INFO - V1: executor já está vinculado à Consulta Médica. procedure_id=645815 executor_id=319
+2026-02-26 13:49:13,554 - INFO - V1 sync completed for record_id=93-2
+2026-02-26 17:54:27,656 - INFO - Dispatching to V2 handler: vrv2_arm_1
+2026-02-26 17:54:28,770 - INFO - REDCap: exported record 93-2 for event vrv2_arm_1 with 193 fields
+2026-02-26 17:54:28,770 - INFO - V2: record 93-2 -> randomizatoin_group=3
+2026-02-26 17:54:29,385 - INFO - REDCap: exported record 93-2 for event vsv1_arm_1 with 385 fields
+2026-02-26 17:54:31,023 - INFO - Polotrial: authentication successful
+2026-02-26 17:54:33,684 - INFO - V2: date field revisao_dt_visita is empty. Not updating visit date for participant 3303 in Polotrial.
+2026-02-26 18:27:40,276 - INFO - Dispatching to V2 handler: vrv2_arm_1
+2026-02-26 18:27:41,273 - INFO - REDCap: exported record 93-2 for event vrv2_arm_1 with 193 fields
+2026-02-26 18:27:41,273 - INFO - V2: record 93-2 -> randomizatoin_group=3
+2026-02-26 18:27:41,567 - INFO - REDCap: exported record 93-2 for event vsv1_arm_1 with 385 fields
+2026-02-26 18:27:43,218 - INFO - Polotrial: authentication successful
+2026-02-26 18:27:45,781 - INFO - V2: date field revisao_dt_visita is empty. Not updating visit date for participant 3303 in Polotrial.

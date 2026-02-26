@@ -35,13 +35,13 @@ def sync_v1_screening(
     
     # 2. Mapping fields REDCap -> PoloTrial
     gender_code = GENDER_MAPPING.get(str(redcap_payload .get("demografia_sexo","")).strip(), None)
-    site_code = SITE_CODE_MAPPING.get(str(redcap_payload .get("demografia_centro","")).strip(), None)
+    site_code = SITE_CODE_MAPPING.get(str(redcap_payload .get("dados_pessoais_site","")).strip(), None)
     race_code = RACE_CODE_MAPPING.get(str(redcap_payload .get("demografia_raca","")).strip(), None)
     
     volunteer_payload = {
         "nome": redcap_payload.get("record_id") or record_id,
-        "iniciais": redcap_payload.get("demografia_iniciais"),
-        "data_nascimento": redcap_payload.get("demografia_data_nascimento"),
+        "iniciais": redcap_payload.get("dados_pessoais_q12"),
+        "data_nascimento": redcap_payload.get("dados_pessoais_q4"),
         "sexo": gender_code,
         "data_inclusao": redcap_payload.get("dados_sociodemograficos_dt"),
         "centro": site_code,
@@ -50,7 +50,7 @@ def sync_v1_screening(
     }
     
     if not site_code:
-        raise RuntimeError("Could not map site (demografia_centro) to polotrial co_centro")
+        raise RuntimeError("Could not map site (dados_pessoais_site) to polotrial co_centro")
     
     #3. Volunteer
     existing = polotrial.find_volunteer_by_name(volunteer_payload["nome"])
@@ -335,20 +335,20 @@ def sync_consulta_medica_executor(
     volunteer_payload: Dict[str, Any],
     polotrial: PoloTrialClient,
 ) -> None:
-    executor_name = str(volunteer_payload.get("form_medico_rubrica") or "").strip()
+    executor_name = str(volunteer_payload.get("consulta_nome_medico") or "").strip()
     if not executor_name:
-        logger.info("V1: form_medico_rubrica vazio; não é possível atribuir executor (Consulta Médica).")
+        logger.info("V1: consulta_nome_medico vazio; não é possível atribuir executor (Consulta Médica).")
         return
 
-    data_realizada = str(volunteer_payload.get("form_medico_dt_rubrica") or "").strip()
+    data_realizada = str(volunteer_payload.get("consulta_dt") or "").strip()
     if not data_realizada:
-        logger.info("V1: form_medico_dt_rubrica vazio; não é possível atribuir executor (Consulta Médica).")
+        logger.info("V1: consulta_dt vazio; não é possível atribuir executor (Consulta Médica).")
         return
 
     cm = merged_procedures_df[
         merged_procedures_df["nome_procedimento_estudo"]
         .astype(str)
-        .str.contains(r"^Consulta M[eéEÉ]dica$", regex=True, na=False)
+        .str.contains(r"^Consulta [Mm][eéEÉ]dica$", regex=True, na=False)
     ]
     if cm.empty:
         logger.warning("V1: procedimento 'Consulta Médica' não encontrado na visita (PoloTrial).")

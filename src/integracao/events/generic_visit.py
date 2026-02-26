@@ -34,19 +34,19 @@ def sync_generic_visit(
     
     #1. Check if the visit requires PK.
     if visit_config.requires_pk is not None:
-        is_pk = get_is_pk_from_v2(record_id, redcap)
-        if visit_config.requires_pk and not is_pk:
+        pp_randomized = get_pp_randomized_from_v2(record_id, redcap)
+        if visit_config.requires_pk and not pp_randomized:
             logger.info(
-                        "%s: Skipping (requires PK = True, but participant is_pk = %s)",
+                        "%s: Skipping (requires PK = True, but participant pp_randomized = %s)",
                         visit_config.polotrial_visit_name,
-                        is_pk,
+                        pp_randomized,
                         )
             return
-        if not visit_config.requires_pk and is_pk:
+        if not visit_config.requires_pk and pp_randomized:
             logger.info(
-                "%s: Skipping (requires PK = False, but participant is_pk = %s)",
+                "%s: Skipping (requires PK = False, but participant pp_randomized = %s)",
                 visit_config.polotrial_visit_name,
-                is_pk,
+                pp_randomized,
             )
     #2. Get participant info from PoloTrial.
     redcap_payload = redcap.export_record_eav(record_id, event_name)
@@ -114,7 +114,7 @@ def sync_generic_visit(
         
         
 
-def get_is_pk_from_v2(record_id: str, redcap: RedcapClient) -> Optional[bool]:
+def get_pp_randomized_from_v2(record_id: str, redcap: RedcapClient) -> Optional[bool]:
     """
     Fetches the 'is PK' information from the V2 visit data in REDCap.
     Args:

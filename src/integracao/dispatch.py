@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from integracao.events.v1_screening import sync_v1_screening
-from integracao.events.v2_randomizacao import sync_v2_randomizacao
+from integracao.events.v2_randomizacao import sync_v2_randomization
 from integracao.events.generic_visit import sync_generic_visit
 from integracao.visits_catalog import VISITS_CATALOG
 from integracao.polotrial_client import PoloTrialClient
@@ -49,7 +49,7 @@ def dispatch_event(
 
     if  event_name == "vrv2_arm_1":
         logger.info("Dispatching to V2 handler: %s", event_name)
-        sync_v2_randomizacao(
+        sync_v2_randomization(
             record_id = record_id,
             event_name = event_name,
             redcap=redcap,
