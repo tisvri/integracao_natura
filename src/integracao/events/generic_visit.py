@@ -28,7 +28,7 @@ def sync_generic_visit(
     protocol_nickname: str,
 ) -> None:
     """
-    Generic handler to synchronize V3, V4, V5 visits and PK events.
+    Generic handler to synchronize V3 or Visita não programada.
     
     """
     

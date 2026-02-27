@@ -34,15 +34,16 @@ def sync_v1_screening(
         )
     
     # 2. Mapping fields REDCap -> PoloTrial
-    gender_code = GENDER_MAPPING.get(str(redcap_payload .get("demografia_sexo","")).strip(), None)
+    gender_code = GENDER_MAPPING.get(str(redcap_payload .get("dados_pessoais_q5","")).strip(), None)
     site_code = SITE_CODE_MAPPING.get(str(redcap_payload .get("dados_pessoais_site","")).strip(), None)
-    race_code = RACE_CODE_MAPPING.get(str(redcap_payload .get("demografia_raca","")).strip(), None)
+    race_code = RACE_CODE_MAPPING.get(str(redcap_payload .get("dados_pessoais_q9","")).strip(), None)
     
     volunteer_payload = {
         "nome": redcap_payload.get("record_id") or record_id,
         "iniciais": redcap_payload.get("dados_pessoais_q12"),
         "data_nascimento": redcap_payload.get("dados_pessoais_q4"),
         "sexo": gender_code,
+        "email": redcap_payload.get("informacoes_contato_q5"),
         "data_inclusao": redcap_payload.get("dados_sociodemograficos_dt"),
         "centro": site_code,
         "raca_cor": race_code,
@@ -177,9 +178,6 @@ def sync_v1_procedures(
     :return: Description
     :rtype: DataFrame
     """
-
-    from integracao.mappings.procedures_maps import V1_POLOTRIAL_PROCEDURES_MAP 
-    from integracao.utils import get_date_from_redcap
 
     #1. Identify visita procedures (with nested=true to get the procedure name)
     pvp_raw = polotrial.list_participant_visit_procedures(
