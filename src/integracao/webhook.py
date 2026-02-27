@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 #Global Objects (Initialized in lifespan of the app)
 #============================================================================================================================
 
-_setting: Settings | None = None
+_settings: Settings | None = None
 _redcap: RedcapClient | None = None
 _polotrial: PoloTrialClient | None = None
 
@@ -209,7 +209,7 @@ def _run_sync(
             event_name=event_name,
             redcap=_redcap,
             polotrial=_polotrial,
-            protocol_nickname=_settings.protocol.nickname,
+            protocol_nickname=_settings.protocol_nickname,
         )
         logger.info("Successfully processed DET for record_id=%s, event_name=%s", record_id, event_name)
     except Exception:

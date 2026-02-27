@@ -540,3 +540,29 @@
 2026-02-26 18:39:40,329 - INFO - REDCap: exported record 93-2 for event vsv1_arm_1 with 385 fields
 2026-02-26 18:39:41,453 - INFO - Polotrial: authentication successful
 2026-02-26 18:39:43,857 - INFO - V2: date field revisao_dt_visita is empty. Not updating visit for participant 3303.
+2026-02-27 18:11:49,096 - INFO - Webhook initialized for protocol: NATURA
+2026-02-27 18:16:46,884 - INFO - Received DET: project_id=123, username=test_user, instrument=dados_pessoais, record=1, event_name=vsv1_arm_1, data_access_group=, repeat_instance=None, repeat_instrument=None
+2026-02-27 18:16:46,887 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-27 18:16:48,137 - INFO - REDCap: exported record 1 for event vsv1_arm_1 with 0 fields
+2026-02-27 18:16:48,137 - ERROR - Error processing DET for record_id=1, event_name=vsv1_arm_1
+Traceback (most recent call last):
+  File "/home/edu/Python/integracao_natura/src/integracao/webhook.py", line 207, in _run_sync
+    dispatch_event(
+  File "/home/edu/Python/integracao_natura/src/integracao/dispatch.py", line 38, in dispatch_event
+    sync_v1_screening(
+  File "/home/edu/Python/integracao_natura/src/integracao/events/v1_screening.py", line 54, in sync_v1_screening
+    raise RuntimeError("Could not map site (dados_pessoais_site) to polotrial co_centro")
+RuntimeError: Could not map site (dados_pessoais_site) to polotrial co_centro
+2026-02-27 18:27:15,889 - INFO - Received DET: project_id=123, username=test_user, instrument=dados_pessoais, record=1, event_name=vsv1_arm_1, data_access_group=, repeat_instance=None, repeat_instrument=None
+2026-02-27 18:27:15,890 - INFO - Dispatching to V1 handler: vsv1_arm_1
+2026-02-27 18:27:16,792 - INFO - REDCap: exported record 1 for event vsv1_arm_1 with 0 fields
+2026-02-27 18:27:16,792 - ERROR - Error processing DET for record_id=1, event_name=vsv1_arm_1
+Traceback (most recent call last):
+  File "/home/edu/Python/integracao_natura/src/integracao/webhook.py", line 207, in _run_sync
+    dispatch_event(
+  File "/home/edu/Python/integracao_natura/src/integracao/dispatch.py", line 38, in dispatch_event
+    sync_v1_screening(
+  File "/home/edu/Python/integracao_natura/src/integracao/events/v1_screening.py", line 54, in sync_v1_screening
+    raise RuntimeError("Could not map site (dados_pessoais_site) to polotrial co_centro")
+RuntimeError: Could not map site (dados_pessoais_site) to polotrial co_centro
+2026-02-27 18:27:23,941 - INFO - Shutting down webhook for protocol: NATURA
