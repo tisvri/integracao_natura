@@ -46,6 +46,21 @@ class RedcapClient:
         }
         
         redcap_request = self.session.post(self.api_url, data = payload, timeout=self.timeout)
+        #==================================================================================================
+        # Temporary DEBUG: log the full response if the request fails, to help with debugging
+        #==================================================================================================
+        print("INÍCIO DEBUG REDCAP RESPONSE")
+        logger.info("DEBUG REDCAP URL: %s", self.api_url)
+        logger.info("DEBUG REDCAP TOKEN (FIRST 8 CHARS): %s...", self.api_token[:8] if self.api_token else "NO TOKEN")
+        logger.info("DEBUG REDCAP STATUS: %s", redcap_request.status_code)
+        logger.info("DEBUG REDCAP RESPONSE (FIRST 200 CHARS): %s", redcap_request.text[:200])
+        print("FIM DEBUG REDCAP RESPONSE")
+
+        #==================================================================================================
+        # End of temporary DEBUG logging
+        #==================================================================================================
+
+
         redcap_request.raise_for_status()
         
         data = redcap_request.json()

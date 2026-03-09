@@ -76,7 +76,7 @@ def sync_v1_screening(
     arm_match = next(
         (
             a for a in arms
-            if re.search(r"Triagem - Prot. V1 de 09Dez2025", str(a.get("nome", "")), re.IGNORECASE)
+            if re.search(r"Prot. V2", str(a.get("nome", "")), re.IGNORECASE)
         ),
         None,
     )
