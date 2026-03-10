@@ -29,9 +29,9 @@ class Settings:
             redcap_api_url=must("REDCAP_API_URL"),
             redcap_api_key=must("REDCAP_API_KEY"),
             polotrial_api_url=must("POLOTRIAL_API_URL"),
-            polotrial_username=must("POLOTRIAL_PLAYGROUND_USERNAME"),
-            polotrial_password=must("POLOTRIAL_PLAYGROUND_PASSWORD"),
-            # polotrial_username=must("POLOTRIAL_API_USERNAME"),
-            # polotrial_password=must("POLOTRIAL_API_PASSWORD"),
+            # polotrial_username=must("POLOTRIAL_PLAYGROUND_USERNAME"),
+            # polotrial_password=must("POLOTRIAL_PLAYGROUND_PASSWORD"),
+            polotrial_username=must("POLOTRIAL_API_USERNAME"),
+            polotrial_password=must("POLOTRIAL_API_PASSWORD"),
             protocol_nickname=os.getenv("POLOTRIAL_PROTOCOL_NICKNAME", "NATURA"),
         )

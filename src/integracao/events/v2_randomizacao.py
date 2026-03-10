@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import logging
+import json
 from typing import Any, Dict, Optional
 
 import pandas as pd
 import re
 from datetime import datetime
+import time
 
 from integracao.polotrial_client import PoloTrialClient
 from integracao.redcap_client import RedcapClient
@@ -83,69 +85,35 @@ def sync_v2_randomization(
     polotrial: PoloTrialClient,
     protocol_nickname: str,
     v2_date_field: str,
-) -> Optional[int]:
+) -> None:
     """
     Synchronizes Visit 2 (Randomization) in PoloTrial.
 
     Steps:
-        1. Export REDCap data for record + V2 event.
-        2. Determine randomization group from randomizacao_q3.
-        3. Recover co_centro from V1 event (needed to locate participant).
-        4. Locate volunteer → protocol → participant in PoloTrial.
-        5. Update VR/V2 visit date and status.
-        6. Sync procedure executed dates.
-        7. Sync 'Consulta Médica' executor.
-        8. Update participant arm based on randomization group.
-
-    Returns:
-        The group number (1, 2 or 3), or None if not yet filled.
+        1. Export REDCap data for record + V2 event, and V1 event for co_centro.
+        2. Map dados_pessoais_site -> site_code via SITE_CODE_MAPPING.
+        3. Locate volunteer in PoloTrial (V1 must have already run).
+        4. Locate protocol via get_protocol(co_centro, apelido_protocolo).
+        5. Locate participant in PoloTrial.
+        6. Update VR/V2 visit date and status.
+        7. Sync procedure executed dates.
+        8. Sync 'Consulta Médica' executor.
+        9. Update participant arm + data_randomizacao based on randomization group.
     """
-    if event_name != V2_EVENT:
-        raise ValueError(
-            f"sync_v2_randomization called with unexpected {event_name=}"
-        )
+    # 1. Get REDCap data (V2 event + V1 event for co_centro)
+    redcap_payload = redcap.export_record_eav(record_id, event_name)
+    v1_payload = redcap.export_record_eav(record_id, V1_EVENT)
 
-    # ── 1. REDCap data (V2 event) ─────────────────────────────────────
-    redcap_payload = redcap.export_record_eav(
-        record_id=record_id, event_name=event_name,
-    )
-    logger.debug(
-        "V2: Full REDCap payload for record_id=%s, event=%s: %s",
-        record_id, event_name, redcap_payload,
-    )
-
-    # ── 2. Randomization group ────────────────────────────────────────
-    randomization_group = parse_randomization_group(
-        redcap_payload.get(RANDOMIZATION_FIELD),
-    )
-    if randomization_group is None:
-        logger.info(
-            "V2: %s not yet filled for record %s. "
-            "Continuing sync of VR/V2 visit anyway.",
-            RANDOMIZATION_FIELD, record_id,
-        )
-    else:
-        logger.info(
-            "V2: record %s -> randomization_group=%s",
-            record_id, randomization_group,
-        )
-
-    # ── 3. co_centro from V1 ──────────────────────────────────────────
-    v1_payload = redcap.export_record_eav(
-        record_id=record_id, event_name=V1_EVENT,
-    )
+    # 2. Mapping fields REDCap -> PoloTrial
     co_centro_raw = str(v1_payload.get(CENTER_FIELD) or "").strip()
-    co_centro = SITE_CODE_MAPPING.get(co_centro_raw)
-    if not co_centro:
+    site_code = SITE_CODE_MAPPING.get(co_centro_raw)
+    if not site_code:
         raise RuntimeError(
             f"V2: Could not map {CENTER_FIELD}={co_centro_raw!r} "
             "to PoloTrial site code"
         )
-    logger.debug(
-        "V2: Mapped %s=%r -> co_centro=%s", CENTER_FIELD, co_centro_raw, co_centro,
-    )
 
-    # ── 4. Locate participant in PoloTrial ────────────────────────────
+    # 3. Volunteer (find only — V2 presupposes V1 already ran)
     volunteer = polotrial.find_volunteer_by_name(record_id)
     if not volunteer:
         raise RuntimeError(
@@ -153,163 +121,203 @@ def sync_v2_randomization(
             "Cannot sync V2 randomization."
         )
     co_voluntario = int(volunteer["id"])
+    logger.info("Volunteer found: %s -> id=%s", record_id, co_voluntario)
 
-    protocol = polotrial.get_protocol(
-        co_centro=co_centro, apelido_protocolo=protocol_nickname,
-    )
+    # 4. Site Protocol (with DEBUG log identical to V1)
+    logger.info("DEBUG: Searching protocol - co_centro=%s, apelido_protocolo=%s", site_code, protocol_nickname)
+    protocol = polotrial.get_protocol(co_centro=site_code, apelido_protocolo=protocol_nickname)
     if not protocol:
         raise RuntimeError(
-            f"V2: Protocol {protocol_nickname} not found for site {co_centro}"
+            f"V2: Protocol {protocol_nickname!r} not found for site {site_code}"
         )
     co_protocolo = int(protocol["id"])
+    logger.info("Protocol found: id=%s (site=%s)", co_protocolo, site_code)
 
-    participant = polotrial.find_participant(
-        co_voluntario=co_voluntario, co_protocolo=co_protocolo,
-    )
+    # 5. Participant (find only — V2 presupposes V1 already ran)
+    participant = polotrial.find_participant(co_voluntario=co_voluntario, co_protocolo=co_protocolo)
     if not participant:
         raise RuntimeError(
             f"V2: Participant not found for volunteer={co_voluntario} "
             f"protocol={co_protocolo}"
         )
     co_participante = int(participant["id"])
-    logger.debug(
-        "V2: co_voluntario=%s co_protocolo=%s co_participante=%s",
-        co_voluntario, co_protocolo, co_participante,
-    )
+    logger.info("Participant found: id=%s", co_participante)
 
-    # ── 5. Update VR/V2 visit status and date ─────────────────────────
-    v2_date = str(redcap_payload.get(v2_date_field) or "").strip()
-    if not v2_date:
-        logger.info(
-            "V2: date field %s is empty. Not updating visit for participant %s.",
-            v2_date_field, co_participante,
-        )
-        return randomization_group
+    # ── NOTA: data_randomizacao será enviada junto com o arm update
+    #    no passo 9, pois o PUT /participantes/{id} retorna 404
+    #    quando enviado sozinho sem co_braco.
+    v2_date_for_participant = str(redcap_payload.get('randomizacao_q2') or "").strip()
 
+    # 6. Update visit task (VR/V2)
+    time.sleep(20)
     visits = polotrial.list_participant_visits(co_participante=co_participante)
-    v2_visit = next(
-        (v for v in visits if v.get("nome_tarefa") == "VR/V2"), None,
-    )
+    v2_visit = next((v for v in visits if v.get("nome_tarefa", "") == "VR/V2"), None)
     if not v2_visit:
         raise RuntimeError(
-            f"V2: Visit 'VR/V2' not found in PoloTrial for "
-            f"participant {co_participante}"
+            f"V2: Visit 'VR/V2' not found in PoloTrial for participant {co_participante}"
         )
+
     participante_visita_id = int(v2_visit["id"])
+    v2_date = str(redcap_payload.get("elegibilidade_dt") or "").strip()
+    desired = {
+        "data_realizada": v2_date,
+        "status": 20,
+    }
+    logger.info("DEBUG: Desired VR/V2 visit update payload:\n%s", json.dumps(desired, indent=2))
 
-    desired = {"data_realizada": v2_date, "status": 20}
     current = polotrial.get_participant_visit(participante_visita_id)
-
-    if (
-        str(current.get("data_realizada", ""))[:10] == str(desired["data_realizada"])[:10]
-        and int(current.get("status", -1)) == desired["status"]
-    ):
-        logger.info(
-            "V2: VR/V2 already up to date (id=%s). No update needed.",
-            participante_visita_id,
-        )
+    # Compare only what matters
+    if str(current.get("data_realizada", ""))[:10] == str(desired["data_realizada"])[:10] and int(current.get("status", -1)) == int(desired["status"]):
+        logger.info("VR/V2 already up to date (id=%s).", participante_visita_id)
     else:
         polotrial.update_participant_visit(participante_visita_id, desired)
-        logger.info("V2: VR/V2 updated (id=%s).", participante_visita_id)
+        logger.info("VR/V2 updated (id=%s).", participante_visita_id)
 
-    # ── 6. Sync procedure executed dates ──────────────────────────────
-    merged = _build_procedures_dataframe(
+    logger.info(f"DEBUG: Current Date: {current.get('data_realizada')} | Desired Date: {desired['data_realizada']}")
+
+    # 7. Procedures: load participant visit procedures + names
+    pvp_df = sync_v2_procedures(
         participante_visita_id=participante_visita_id,
         co_protocolo=co_protocolo,
-        polotrial=polotrial,
-    )
-
-    total = _sync_procedures(
-        merged_df=merged,
         redcap_payload=redcap_payload,
-        record_id=record_id,
         polotrial=polotrial,
     )
-    logger.info("VR/V2 procedures synchronized: %d", total)
 
-    # ── 7. Sync 'Consulta Médica' executor ────────────────────────────
+    # 8. Sync 'Consulta Médica' executor
     sync_consulta_medica_executor(
-        merged_procedures_df=merged,
+        merged_procedures_df=pvp_df,
         volunteer_payload=redcap_payload,
         polotrial=polotrial,
     )
 
-    # ── 8. Update arm ─��───────────────────────────────────────────────
-    if randomization_group is not None:
+    # 9. Arm update + data_randomizacao (V2 particularity)
+    #
+    #    CORREÇÃO: data_randomizacao é enviada JUNTO com co_braco e
+    #    atualizar_agenda no mesmo PUT /participantes/{id}.
+    #    Enviar data_randomizacao sozinha causava 404
+    #    ("ParticipanteVisita not found!").
+    #
+    randomization_group = parse_randomization_group(
+        redcap_payload.get(RANDOMIZATION_FIELD),
+    )
+    if randomization_group is None:
+        logger.info(
+            "V2: %s not yet filled for record %s. "
+            "Arm will not be updated at this time.",
+            RANDOMIZATION_FIELD, record_id,
+        )
+    else:
+        logger.info(
+            "DEBUG: Updating participant arm - co_participante=%s randomization_group=%s",
+            co_participante, randomization_group,
+        )
         update_participant_arm_if_needed(
             randomization_group=randomization_group,
             co_participante=co_participante,
             co_protocolo=co_protocolo,
             polotrial=polotrial,
-        )
-    else:
-        logger.info(
-            "VR/V2: randomization_group not yet defined for record %s. "
-            "Arm will not be updated at this time.",
-            record_id,
+            data_randomizacao=v2_date_for_participant,  # ← passa a data junto
+            # # Atualizar agenda
+            # atualizar_agenda={"atualizar_agenda": "1"},
         )
 
-    return randomization_group
+    logger.info("V2 sync completed for record_id=%s", record_id)
 
 
 # ── Procedures helpers ─────────────────────────────────────────────────
-def _build_procedures_dataframe(
+def sync_v2_procedures(
     *,
     participante_visita_id: int,
     co_protocolo: int,
+    redcap_payload: Dict[str, Any],
     polotrial: PoloTrialClient,
 ) -> pd.DataFrame:
     """
-    Builds a merged DataFrame of participant-visit-procedures
-    enriched with protocol procedure names.
+    Loads participant visit procedures, matches them with V2_POLOTRIAL_PROCEDURES_MAP
+    using regex, logs DEBUG details for each procedure, and syncs data_executada
+    dates from REDCap to PoloTrial.
     """
+    # 1. Identify visit procedures (with nested=true to get the procedure name)
     pvp_raw = polotrial.list_participant_visit_procedures(
         co_participante_visita=participante_visita_id,
     )
+
+    # 2. Convert to DataFrame and extract procedure names
     pvp_df = pd.DataFrame(pvp_raw)
 
-    # Try nested dict first; fallback to join via protocol procedures
+    # Extract 'nome_procedimento_estudo' from nested dict or fallback
     if "dados_protocolo_procedimento" in pvp_df.columns:
         pvp_df["nome_procedimento_estudo"] = pvp_df[
             "dados_protocolo_procedimento"
         ].apply(
-            lambda x: x.get("nome_procedimento_estudo")
-            if isinstance(x, dict)
-            else None
+            lambda x: x.get("nome_procedimento_estudo") if isinstance(x, dict) else None
         )
     else:
-        logger.warning(
-            "dados_protocolo_procedimento not in response; "
-            "fetching from /protocolo_procedimento"
+        # Fallback: join via protocol procedures endpoint
+        logger.warning("dados_protocolo_procedimento not in response, fetching from /protocolo_procedimento")
+        proto_proc = polotrial.list_protocol_procedures(co_protocolo=co_protocolo)
+        proto_df = pd.DataFrame(proto_proc)[["id", "nome_procedimento_estudo"]].rename(
+            columns={"id": "co_protocolo_procedimento"}
         )
-        proto_proc = polotrial.list_protocol_procedures(
-            co_protocolo=co_protocolo,
+        pvp_df = pd.merge(pvp_df, proto_df, on="co_protocolo_procedimento", how="left")
+
+    # Add mapping columns
+    pvp_df["redcap_check_field"] = None
+    pvp_df["redcap_date_field"] = None
+    pvp_df["procedure_pattern"] = None
+
+    # Match procedures with mapping using regex
+    matched_count = 0
+    unmatched_procedures = []
+
+    for idx, row in pvp_df.iterrows():
+        proc_name = str(row.get("nome_procedimento_estudo", "")).strip()
+        matched = False
+
+        for cfg in V2_POLOTRIAL_PROCEDURES_MAP:
+            pattern = cfg["procedure_name"]
+            if re.search(pattern, proc_name, re.IGNORECASE):
+                pvp_df.at[idx, "redcap_check_field"] = cfg["redcap_check_field"]
+                pvp_df.at[idx, "redcap_date_field"] = cfg["redcap_date_field"]
+                pvp_df.at[idx, "procedure_pattern"] = pattern
+                matched = True
+                matched_count += 1
+                break
+
+        if not matched:
+            unmatched_procedures.append(proc_name)
+
+    # DEBUG: Show procedures with mapping info
+    logger.info("DEBUG: Available procedures in VR/V2:")
+    for idx, row in pvp_df.iterrows():
+        check_field = row.get("redcap_check_field")
+        date_field = row.get("redcap_date_field")
+
+        check_value = redcap_payload.get(check_field, "N/A") if check_field else "N/A"
+        date_value = redcap_payload.get(date_field, "N/A") if date_field else "N/A"
+
+        logger.info(
+            " - ID: %s | Proc: %s | Data exec: %s | Check field: %s=%s | Date field: %s=%s",
+            row["id"],
+            row.get("nome_procedimento_estudo"),
+            row.get("data_executada"),
+            check_field,
+            check_value,
+            date_field,
+            date_value,
         )
-        proto_df = (
-            pd.DataFrame(proto_proc)[["id", "nome_procedimento_estudo"]]
-            .rename(columns={"id": "co_protocolo_procedimento"})
-        )
-        pvp_df = pd.merge(
-            pvp_df, proto_df, on="co_protocolo_procedimento", how="left",
-        )
+    logger.info("DEBUG: Procedure mapping summary:")
+    logger.info("  Total procedures in PoloTrial: %d", len(pvp_df))
+    logger.info("  Matched with mapping: %d", matched_count)
+    logger.info("  Unmatched: %d", len(unmatched_procedures))
 
-    return pvp_df
+    if unmatched_procedures:
+        logger.warning("DEBUG: Unmatched procedures (no mapping found):")
+        for proc in unmatched_procedures:
+            logger.warning("  - '%s'", proc)
 
-
-def _sync_procedures(
-    *,
-    merged_df: pd.DataFrame,
-    redcap_payload: Dict[str, Any],
-    record_id: str,
-    polotrial: PoloTrialClient,
-) -> int:
-    """
-    For each procedure in V2_POLOTRIAL_PROCEDURES_MAP, finds the matching
-    row in merged_df and updates data_executada in PoloTrial.
-
-    Returns the number of procedures successfully synchronized.
-    """
-    total = 0
+    # 3. For each procedure in mapping, search and update
+    total_synced = 0
 
     for cfg in V2_POLOTRIAL_PROCEDURES_MAP:
         pattern = cfg["procedure_name"]
@@ -317,71 +325,52 @@ def _sync_procedures(
         date_field = cfg["redcap_date_field"]
 
         if not (pattern and check_field and date_field):
-            logger.warning("Invalid procedure config: %s. Skipping.", cfg)
+            logger.warning("Invalid procedure config: %s. Skipping...", cfg)
             continue
 
-        to_sync = merged_df[
-            merged_df["nome_procedimento_estudo"].str.contains(
-                pattern, regex=True, na=False, flags=re.IGNORECASE,
-            )
-            & (
-                merged_df["data_executada"].isna()
-                | (merged_df["data_executada"] == "")
-            )
+        to_sync = pvp_df[
+            pvp_df["nome_procedimento_estudo"].str.contains(pattern, regex=True, na=False, flags=re.IGNORECASE)
+            & (pvp_df["data_executada"].isna() | (pvp_df["data_executada"] == ""))
         ]
 
         if to_sync.empty:
-            logger.info(
-                "No procedure to sync for pattern %r (record=%s)",
-                pattern, record_id,
-            )
+            logger.info("No procedure to sync for pattern %s", pattern)
             continue
 
         if len(to_sync) > 1:
-            logger.warning(
-                "Multiple procedures matched %r; using first (id=%s)",
-                pattern, to_sync["id"].iloc[0],
-            )
+            logger.warning("Multiple procedures matched pattern %s, using first: %s", pattern, to_sync.iloc[0]["nome_procedimento_estudo"])
 
         procedure_id = int(to_sync["id"].iloc[0])
+        procedure_name = to_sync["nome_procedimento_estudo"].iloc[0]
 
-        redcap_date = get_date_from_redcap(
-            redcap_payload, check_field, date_field,
-        )
+        redcap_date = get_date_from_redcap(redcap_payload, check_field, date_field)
         if not redcap_date:
-            logger.info(
-                "No date in REDCap for %r (record=%s)", pattern, record_id,
-            )
+            logger.info("No date in REDCap for procedure '%s' (check_field=%s)", procedure_name, check_field)
             continue
 
-        # Normalise — handles both "YYYY-MM-DD" and "YYYY-MM-DD HH:MM"
         redcap_date = str(redcap_date).strip()
-        date_match = re.match(r"(\d{4}-\d{2}-\d{2})", redcap_date)
-        if not date_match:
-            logger.error(
-                "Could not extract date from %r for %r", redcap_date, pattern,
-            )
-            continue
 
-        formatted_date = date_match.group(1)
         try:
+            date_match = re.match(r"(\d{4}-\d{2}-\d{2})", redcap_date)
+            if not date_match:
+                raise ValueError(f"Could not extract date from: {redcap_date}")
+
+            formatted_date = date_match.group(1)
             datetime.strptime(formatted_date, "%Y-%m-%d")
-        except ValueError:
-            logger.error(
-                "Invalid date %r for %r (expected YYYY-MM-DD)",
-                formatted_date, pattern,
-            )
+
+        except ValueError as e:
+            logger.error("Invalid date format in REDCap for procedure '%s': %s (error: %s)", procedure_name, redcap_date, str(e))
             continue
 
         polotrial.update_participant_visit_procedure(
             procedure_id, {"data_executada": formatted_date},
         )
-        logger.info(
-            "Procedure updated: id=%s date=%s", procedure_id, formatted_date,
-        )
-        total += 1
+        logger.info("✅ Procedure updated successfully. procedure_id=%s date=%s", procedure_id, formatted_date)
+        total_synced += 1
 
-    return total
+    logger.info("V2 procedures synchronized: %d/%d", total_synced, len(V2_POLOTRIAL_PROCEDURES_MAP))
+
+    return pvp_df
 
 
 # ── Consulta Médica executor ──────────────────────────────────────────
@@ -429,7 +418,6 @@ def sync_consulta_medica_executor(
             procedure_id,
         )
 
-    # find_person_by_name returns a dict, not a DataFrame
     person = polotrial.find_person_by_name(executor_name)
     if not person:
         logger.error(
@@ -472,9 +460,11 @@ def update_participant_arm_if_needed(
     co_participante: int,
     co_protocolo: int,
     polotrial: PoloTrialClient,
+    data_randomizacao: str = "",
 ) -> None:
     """
-    Moves the participant to the correct arm after V2 randomization.
+    Moves the participant to the correct arm after V2 randomization
+    and sets data_randomizacao in the same PUT request.
 
         randomizacao_q3 == 1 → Grupo 1 - Sérum Ultra Repositor
         randomizacao_q3 == 2 → Grupo 2 - Hidratante Ultra Refrescante e Hidratante Íntimo
@@ -490,15 +480,15 @@ def update_participant_arm_if_needed(
     target_arm_pattern = arm_info["pattern"]
     arm_label = arm_info["label"]
 
-    all_arms = polotrial.list_arms()
-    protocol_arms = [
-        a for a in all_arms
-        if int(a.get("co_protocolo", -1)) == co_protocolo
-    ]
+    logger.info(
+        "DEBUG: Looking for arm - randomization_group=%s pattern=%s label=%s",
+        randomization_group, target_arm_pattern, arm_label,
+    )
+
+    all_arms = polotrial.list_arms(co_protocolo)
+    protocol_arms = all_arms
     if not protocol_arms:
-        raise RuntimeError(
-            f"No arms found for protocol {co_protocolo}"
-        )
+        raise RuntimeError(f"No arms found for protocol {co_protocolo} in PoloTrial.")
 
     target_arm = next(
         (
@@ -518,18 +508,42 @@ def update_participant_arm_if_needed(
     participant = polotrial.get_participant(co_participante)
     current_arm_id = int(participant.get("co_braco", -1))
 
-    if current_arm_id == co_braco_desired:
-        logger.info(
-            "VR/V2: participant %s already in arm %s (%s). No update.",
-            co_participante, co_braco_desired, arm_label,
-        )
-        return
+    # ── Build payload: co_braco + atualizar_agenda + data_randomizacao ──
+    arm_payload: Dict[str, Any] = {
+        "co_braco": co_braco_desired,
+        "atualizar_agenda": "1",
+    }
+    if data_randomizacao:
+        arm_payload["data_randomizacao"] = data_randomizacao
 
-    polotrial.update_participant(
-        co_participante,
-        {"co_braco": co_braco_desired, "atualizar_agenda": "1"},
-    )
+    if current_arm_id == co_braco_desired:
+        # Braço já correto, mas ainda pode precisar atualizar data_randomizacao
+        if data_randomizacao:
+            current_data_rand = str(participant.get("data_randomizacao") or "")[:10]
+            if current_data_rand == data_randomizacao[:10]:
+                logger.info(
+                    "VR/V2: participant %s already in arm %s (%s) "
+                    "and data_randomizacao already set. No update.",
+                    co_participante, co_braco_desired, arm_label,
+                )
+                return
+            # Braço correto mas data_randomizacao diferente — atualiza
+            logger.info(
+                "VR/V2: participant %s already in arm %s (%s) "
+                "but data_randomizacao needs update.",
+                co_participante, co_braco_desired, arm_label,
+            )
+        else:
+            logger.info(
+                "VR/V2: participant %s already in arm %s (%s). No update.",
+                co_participante, co_braco_desired, arm_label,
+            )
+            return
+
+    logger.info("DEBUG: Sending arm update payload:\n%s", json.dumps(arm_payload, indent=2))
+    polotrial.update_participant(co_participante, arm_payload)
     logger.info(
-        "VR/V2: participant %s arm updated %s → %s (%s).",
+        "VR/V2: participant %s arm updated %s → %s (%s). data_randomizacao=%s",
         co_participante, current_arm_id, co_braco_desired, arm_label,
+        data_randomizacao or "(not set)",
     )

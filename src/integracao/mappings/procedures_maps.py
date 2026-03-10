@@ -58,14 +58,14 @@ V1_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
      {
         #10
         "procedure_name": r"Registro de eventos adversos",
-        "redcap_check_field": "ea_evento",
-        "redcap_date_field": "ea_dt_inicio"
+        "redcap_check_field": "revisao_dados_q13",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #11
         "procedure_name": r"Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa",
-        "redcap_check_field": "medicacao_dt",
-        "redcap_date_field": "medicacao_dt"
+        "redcap_check_field": "revisao_dados_q5",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #12
@@ -241,28 +241,28 @@ V2_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         "redcap_date_field": "exame_fisico_dt"
     },
      {
-        #8
-        "procedure_name": r"Exame de gravidez (urina)",
+        #8 — ESCAPAR parênteses
+        "procedure_name": r"Exame de gravidez \(urina\)",
         "redcap_check_field": "teste_gravidez_q2",
         "redcap_date_field": "teste_gravidez_dt"
     },
      {
-        #9
-        "procedure_name": r"Orientações sobre a utilização do(s) cosmético(s)",
+        #9 — ESCAPAR parênteses
+        "procedure_name": r"Orientações sobre a utilização do\(s\) cosmético\(s\)",
         "redcap_check_field": "revisao_dados_q8",
         "redcap_date_field": "revisao_dados_dt"
     },
      {
         #10
         "procedure_name": r"Registro de eventos adversos",
-        "redcap_check_field": "ea_evento",
-        "redcap_date_field": "ea_dt_inicio"
+        "redcap_check_field": "revisao_dados_q13",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #11
         "procedure_name": r"Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa",
-        "redcap_check_field": "medicacao_dt",
-        "redcap_date_field": "medicacao_dt"
+        "redcap_check_field": "revisao_dados_q5",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #12
@@ -331,20 +331,20 @@ V2_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         "redcap_date_field": "aval_dermato_dt"
     },
      {
-        #23
-        "procedure_name": r"Avaliação de satisfação da participante (Escala Likert de 5 pontos)",
+        #23 — ESCAPAR parênteses
+        "procedure_name": r"Avaliação de satisfação da participante \(Escala Likert de 5 pontos\)",
         "redcap_check_field": "satisfacao_iniciais_q1",
         "redcap_date_field": "satisfacao_iniciais_dt"
     },
      {
-        #24-Sérum Ultra Repositor
-        "procedure_name": r"Gravidade de fotoenvelhecimento (Escala de Glogau)",
+        #24-Sérum Ultra Repositor — ESCAPAR parênteses
+        "procedure_name": r"Gravidade de fotoenvelhecimento \(Escala de Glogau\)",
         "redcap_check_field": "sur_q2",
         "redcap_date_field": "sur_dt"
     },
     {
-        #24 - Tratamento Intensivo Noturno
-        "procedure_name": r"Gravidade de fotoenvelhecimento (Escala de Glogau)",
+        #24 - Tratamento Intensivo Noturno — ESCAPAR parênteses
+        "procedure_name": r"Gravidade de fotoenvelhecimento \(Escala de Glogau\)",
         "redcap_check_field": "tin_q2",
         "redcap_date_field": "tin_dt"
     },
@@ -361,20 +361,20 @@ V2_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         "redcap_date_field": "sur_dt"
     },
      {
-        #27
-        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador (escala IGA para pigmentação)",
+        #27 — ESCAPAR parênteses + \s+ para espaços duplos
+        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador\s+\(escala IGA para\s+pigmentação\)",
         "redcap_check_field": "hurhi_q2",
         "redcap_date_field": "hurhi_dt"
     },
      {
-        #28
-        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador (escala visual para ressecamento)",
+        #28 — ESCAPAR parênteses + \s+ para espaços duplos
+        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador\s+\(escala visual para\s+ressecamento\)",
         "redcap_check_field": "hurhi_q3",
         "redcap_date_field": "hurhi_dt"
     },
      {
-        #29
-        "procedure_name": r"Avaliação clínica subjetiva realizada pela participante (escala visual analógica para ressecamento)",
+        #29 — ESCAPAR parênteses + \s+ para espaços duplos
+        "procedure_name": r"Avaliação clínica subjetiva realizada pela participante\s+\(escala visual\s+analógica para ressecamento\)",
         "redcap_check_field": "hurhi_q5",
         "redcap_date_field": "hurhi_dt"
     },
@@ -647,14 +647,14 @@ VISITA_NAO_PROGRAMADA_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
      {
         #10
         "procedure_name": r"Registro de eventos adversos",
-        "redcap_check_field": "ea_evento",
-        "redcap_date_field": "ea_dt_inicio"
+        "redcap_check_field": "revisao_dados_q13",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #11
         "procedure_name": r"Registro de medicações prévias/concomitantes e uso de terapia hormonal da menopausa",
-        "redcap_check_field": "medicacao_dt",
-        "redcap_date_field": "medicacao_dt"
+        "redcap_check_field": "revisao_dados_q5",
+        "redcap_date_field": "revisao_dados_dt"
     },
      {
         #12
