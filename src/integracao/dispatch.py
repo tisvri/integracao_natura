@@ -1,16 +1,20 @@
 from __future__ import annotations
 
 import logging
+import os
 
 from integracao.events.v1_screening import sync_v1_screening
 from integracao.events.v2_randomizacao import sync_v2_randomization
 from integracao.events.generic_visit import sync_generic_visit
+from integracao.events.status_atualization import PARTICIPANT_STATUS_EVENT, sync_participant_status_update
 from integracao.visits_catalog import VISITS_CATALOG
 from integracao.polotrial_client import PoloTrialClient
 from integracao.redcap_client import RedcapClient
 
 
 logger = logging.getLogger(__name__)
+
+PARTICIPANT_STATUS_EVENT = os.getenv("PARTICIPANT_STATUS_EVENT_NAME")
 
 def dispatch_event(
     *,
@@ -47,7 +51,7 @@ def dispatch_event(
         return
     
 
-    if  event_name == "vrv2_arm_1":
+    if event_name == "vrv2_arm_1":
         logger.info("Dispatching to V2 handler: %s", event_name)
         sync_v2_randomization(
             record_id = record_id,
@@ -59,8 +63,18 @@ def dispatch_event(
         )
         
         return
+    if event_name == PARTICIPANT_STATUS_EVENT:
+        logger.info("Dispatching to participant status update handler: %s", event_name)
+        sync_participant_status_update(
+            record_id=record_id,
+            event_name=event_name,
+            redcap=redcap,
+            polotrial=polotrial,
+            protocol_nickname=protocol_nickname,
+        )
+        return
     
-    if  event_name in VISITS_CATALOG:
+    if event_name in VISITS_CATALOG:
         visit_config = VISITS_CATALOG[event_name]
         logger.info("Dispatching to generic handler: %s (task=%s)", event_name, visit_config.polotrial_visit_name)
         sync_generic_visit(

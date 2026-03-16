@@ -8,6 +8,7 @@ import pandas as pd
 import re
 from datetime import datetime
 import time
+import os
 
 from integracao.polotrial_client import PoloTrialClient
 from integracao.redcap_client import RedcapClient
@@ -19,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 # ── Constants ──────────────────────────────────────────────────────────
 V1_EVENT = "vsv1_arm_1"
-CENTER_FIELD = "dados_pessoais_site"
+CENTER_FIELD = os.getenv("CENTRO")
 
 V2_EVENT = "vrv2_arm_1"
 V2_DATE_FIELD = "revisao_dt_visita"

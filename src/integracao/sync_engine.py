@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -14,6 +15,8 @@ from integracao.redcap_client import RedcapClient
 from integracao.mappings.site_code_maps import SITE_CODE_MAPPING
 
 logger = logging.getLogger(__name__)
+
+V1_EVENT = os.getenv("V1_EVENT_NAME")
 
 def get_participant_info(
     *, 
@@ -36,7 +39,7 @@ def get_participant_info(
     co_voluntario=int(volunteer['id'])
     
     # 2. Searching protocol site from V1
-    v1_payload = redcap.export_record_eav(record_id, "vsv1_arm_1")
+    v1_payload = redcap.export_record_eav(record_id, V1_EVENT)
     co_centro_raw = str(v1_payload.get('dados_pessoais_site')or '').strip()
     co_centro = SITE_CODE_MAPPING.get(co_centro_raw)
     if not co_centro:
