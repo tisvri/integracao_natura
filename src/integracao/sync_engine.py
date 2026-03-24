@@ -183,6 +183,17 @@ def sync_procedures(
             {"data_executada": dt.strftime("%Y-%m-%d")}
         )
         total += 1
+    
+    logger.info(
+        "%s: pattern=%r matched_rows=%d | check %s=%r | date %s=%r",
+        visit_label,
+        pattern,
+        len(to_sync),
+        check_field,
+        redcap_payload.get(check_field),
+        date_field,
+        redcap_payload.get(date_field),
+    )
         
     logger.info("%s: procedures synchronized: %d", visit_label, total)
     return total

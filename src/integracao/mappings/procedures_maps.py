@@ -754,19 +754,19 @@ VISITA_NAO_PROGRAMADA_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #27
-        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador \(escala IGA para pigmentação\)",
+        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador\s*\(escala IGA para pigmentação\)",
         "redcap_check_field": "hurhi_q2",
         "redcap_date_field": "hurhi_dt"
     },
      {
         #28
-        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador \(escala visual para ressecamento\)",
+        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador\s*\(escala visual para ressecamento\)",
         "redcap_check_field": "hurhi_q3",
         "redcap_date_field": "hurhi_dt"
     },
      {
         #29
-        "procedure_name": r"Avaliação clínica subjetiva realizada pela participante \(escala visual analógica para ressecamento\)",
+        "procedure_name": r"Avaliação clínica subjetiva realizada pela participante\s*\(escala visual analógica para ressecamento\)",
         "redcap_check_field": "hurhi_q5",
         "redcap_date_field": "hurhi_dt"
     },
