@@ -400,12 +400,12 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         "redcap_check_field": "tcle_q6",
         "redcap_date_field": "tcle_q6"
     },
-    {
-        #2
-        "procedure_name": r"Avaliação dos critérios de elegibilidade",
-        "redcap_check_field": "",
-        "redcap_date_field": ""
-    },
+    # {
+    #     #2
+    #     "procedure_name": r"Avaliação dos critérios de elegibilidade",
+    #     "redcap_check_field": "",
+    #     "redcap_date_field": ""
+    # },
      {
         #3
         "procedure_name": r"Revisão dos critérios de elegibilidade",
