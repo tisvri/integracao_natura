@@ -173,7 +173,7 @@ def sync_procedures(
         
         # Format validation
         try:
-            dt = datetime.strptime(redcap_date, "%Y-%m-%d")
+            dt = datetime.strptime(redcap_date[:10], "%Y-%m-%d")
         except ValueError:
             logger.error("%s: Invalid date for %s: %r (expected format: YYYY-MM-DD)", visit_label, pattern, redcap_date)
             continue
