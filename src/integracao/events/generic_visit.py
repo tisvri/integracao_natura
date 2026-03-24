@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from typing import Optional
 
 import pandas as pd
@@ -23,7 +24,7 @@ logger = logging.getLogger(__name__)
 #====================================================================================================
 # Constants
 #====================================================================================================
-V2_EVENT = "vrv2_arm_1"
+V2_EVENT = os.getenv("REDCAP_EVENT_V2")
 RANDOMIZATION_FIELD = "randomizacao_q3"
 
 def resolve_polotrial_visit_name(

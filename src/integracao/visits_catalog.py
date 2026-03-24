@@ -51,7 +51,8 @@ VISITS_CATALOG = {
             "field": "consulta_nome_medico",
             'date_field': 'consulta_dt',
             "procedure_pattern": r"^Consulta M[eéEÉ]dica$"
-        },        
+        },
+        visit_name_by_group = V3_VISITA_NAME_BY_GROUP,        
     ),
     # Unscheduled Visit
     "visita_no_programa_arm_1": VisitConfig(
