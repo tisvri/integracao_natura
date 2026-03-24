@@ -146,24 +146,21 @@ def sync_procedures(
     total = 0
     for cfg in procedures_map:
         pattern = cfg["procedure_name"]
-        co_proc = cfg["co_procedimento"]
+        # co_proc = cfg["co_procedimento"]
         check_field = cfg["redcap_check_field"]
-        # The line `date_field = cfg["redcap_date_field"]` is attempting to access the value
-        # associated with the key "redcap_date_field" in the dictionary `cfg`.
+        # The line `date_field = cfg["redcap_date_field"]` is attempting to access the value associated with the key "redcap_date_field" in the dictionary `cfg`.
         date_field = cfg["redcap_date_field"]
         
-        if not (pattern and co_proc and check_field and date_field):
+        if not (pattern and check_field and date_field):
             logger.warning("%s: Invalid procedure mapping config: %s. Skipping...", visit_label, cfg)
             continue
         
         to_sync = merged[
-            merged["nome_procedimento_estudo"].str.contains(pattern, regex = True, na = False, flags=re.IGNORECASE) &
-            (merged["co_procedimento"].astype(str) == str(co_proc)) &
-            (merged["data_executada"].isna() | (merged["data_executada"]==""))
-        ]
+            merged["nome_procedimento_estudo"].str.contains(pattern, regex=True, na=False, flags=re.IGNORECASE) &
+        (merged["data_executada"].isna() | (merged["data_executada"] == ""))
+    ]
         
         if to_sync.empty:
-            logger.info("%s: No procedure to sync for pattern %r and co_procedimento %s", visit_label, pattern, co_proc)
             continue
     
         procedure_id = int(to_sync['id'].iloc[0])
