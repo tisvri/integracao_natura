@@ -53,7 +53,7 @@ class RedcapClient:
         logger.info("DEBUG REDCAP URL: %s", self.api_url)
         logger.info("DEBUG REDCAP TOKEN (FIRST 8 CHARS): %s...", self.api_token[:8] if self.api_token else "NO TOKEN")
         logger.info("DEBUG REDCAP STATUS: %s", redcap_request.status_code)
-        logger.info("DEBUG REDCAP RESPONSE (FIRST 200 CHARS): %s", redcap_request.text[:200])
+        logger.info("DEBUG REDCAP RESPONSE (FIRST 200 CHARS): %s", redcap_request.text) #[:200]
         print("FIM DEBUG REDCAP RESPONSE")
 
         #==================================================================================================
