@@ -222,6 +222,7 @@ def get_date_from_redcap(
             )
             return None
         return str(payload[date_field]).strip()
+    logger.info("Date field %s not found or empty in payload", date_field)
     return None
 
 
