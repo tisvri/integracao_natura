@@ -8,7 +8,7 @@ from integracao.mappings.procedures_maps import (
     VISITA_NAO_PROGRAMADA_PROCEDURES_MAP,
 )
 
-from integracao.mappings.v3_visit_name_maps import V3_VISITA_NAME_BY_GROUP
+from integracao.mappings.v3_visit_name_maps import V3_VISIT_NAME_BY_GROUP
 
 class VisitConfig:
     """
@@ -52,7 +52,7 @@ VISITS_CATALOG = {
             'date_field': 'consulta_dt',
             "procedure_pattern": r"^Consulta M[eéEÉ]dica$"
         },
-        visit_name_by_group = V3_VISITA_NAME_BY_GROUP,        
+        visit_name_by_group = V3_VISIT_NAME_BY_GROUP,        
     ),
     # Unscheduled Visit
     "visita_no_programa_arm_1": VisitConfig(

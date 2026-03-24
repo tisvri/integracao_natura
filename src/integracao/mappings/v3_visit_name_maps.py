@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 # V3 MAPPING
 #====================================================================================================
 
-V3_VISITA_NAME_BY_GROUP: Dict[int, str] = {
+V3_VISIT_NAME_BY_GROUP: Dict[int, str] = {
     1: "VF/V3 - Grupo Sérum Ultra Repositor",
     2: "VF/V3 - Grupo Hidra. Ultra. Refres. e Hidra. Intimo",
     3: "VF/V3 - Grupo Trat. Intensivo Noturno",

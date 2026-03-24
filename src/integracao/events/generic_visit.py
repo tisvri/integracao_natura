@@ -61,7 +61,7 @@ def resolve_polotrial_visit_name(
             f"{V2_EVENT} está vazio ou com valor inesperado: {raw_value!r}"
         )
     # 3. Get visit name by group
-    visit_name = visit_config.visit_name_by_group(group)
+    visit_name = visit_config.visit_name_by_group.get(group)
     if not visit_name:
         raise RuntimeError(
             f"V3: Grupo de randomização {group} não possui nome de visita "
