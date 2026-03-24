@@ -57,4 +57,5 @@ def parse_randomziation_group(value) -> Optional[int]:
     if not s:
         return None
     
-    return ARM_MAPPING.get(s)
+    arm_mapping_lower = {k.lower(): v for k, v in ARM_MAPPING.items()}
+    return arm_mapping_lower.get(s)
