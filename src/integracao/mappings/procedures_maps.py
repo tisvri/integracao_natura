@@ -558,7 +558,7 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #27
-        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador \(escala IGA para pigmentação\)",
+        "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador \(escala IGA para  pigmentação\)",
         "redcap_check_field": "hurhi_q2",
         "redcap_date_field": "hurhi_dt"
     },
