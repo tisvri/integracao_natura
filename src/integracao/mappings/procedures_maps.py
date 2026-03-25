@@ -452,7 +452,7 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         #10
         "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
         "redcap_check_field": "ea_evento",
-        "redcap_date_field": "ea_dt_inicio"
+        "redcap_date_field": "revisao_dados_dt"
     },
     {
         #11
