@@ -366,7 +366,7 @@ V2_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
         "redcap_check_field": "hurhi_q2",
         "redcap_date_field": "hurhi_dt"
     },
-     {
+    {
         #28 — ESCAPAR parênteses + \s+ para espaços duplos
         "procedure_name": r"Avaliação clínica subjetiva realizada pelo pesquisador\s+\(escala visual para\s+ressecamento\)",
         "redcap_check_field": "hurhi_q3",
