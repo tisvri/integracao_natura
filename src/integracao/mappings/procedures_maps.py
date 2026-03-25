@@ -57,7 +57,7 @@ V1_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #10
-        "procedure_name": r"Registro de eventos adversos",
+        "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
         "redcap_check_field": "revisao_dados_q13",
         "redcap_date_field": "revisao_dados_dt"
     },
@@ -254,7 +254,7 @@ V2_POLOTRIAL_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #10
-        "procedure_name": r"Registro de eventos adversos",
+        "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
         "redcap_check_field": "revisao_dados_q13",
         "redcap_date_field": "revisao_dados_dt"
     },
@@ -450,7 +450,7 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #10
-        "procedure_name": r"Registro de eventos adversos",
+        "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
         "redcap_check_field": "ea_evento",
         "redcap_date_field": "ea_dt_inicio"
     },
@@ -646,7 +646,7 @@ VISITA_NAO_PROGRAMADA_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     },
      {
         #10
-        "procedure_name": r"Registro de eventos adversos",
+        "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
         "redcap_check_field": "revisao_dados_q13",
         "redcap_date_field": "revisao_dados_dt"
     },
