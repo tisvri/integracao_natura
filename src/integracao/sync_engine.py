@@ -150,6 +150,7 @@ def sync_procedures(
         check_field = cfg["redcap_check_field"]
         # The line `date_field = cfg["redcap_date_field"]` is attempting to access the value associated with the key "redcap_date_field" in the dictionary `cfg`.
         date_field = cfg["redcap_date_field"]
+        logger.debug("%s: Processing procedure pattern %r with check_field=%r and date_field=%r", visit_label, pattern, check_field, date_field)
         
         if not (pattern and check_field and date_field):
             logger.warning("%s: Invalid procedure mapping config: %s. Skipping...", visit_label, cfg)
