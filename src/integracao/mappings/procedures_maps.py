@@ -457,7 +457,7 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     {
         #11
         "procedure_name": r"Registro\s+de\s+medicações\s+prévias/concomitantes\s+e\s+uso\s+de\s+terapia\s+hormonal\s+da\s+menopausa",
-        "redcap_check_field": "revisao_dados_q15",
+        "redcap_check_field": "revisao_dados_q14",
         "redcap_date_field": "revisao_dados_dt"
     },
     {
