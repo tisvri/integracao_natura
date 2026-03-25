@@ -451,14 +451,14 @@ V3_PROCEDURES_MAP: List[Dict[str, Optional[str]]] = [
     {
         #10
         "procedure_name": r"Registro\s+de\s+eventos\s+adversos",
-        "redcap_check_field": "ea_evento",
+        "redcap_check_field": "revisao_dados_q13",
         "redcap_date_field": "revisao_dados_dt"
     },
     {
         #11
         "procedure_name": r"Registro\s+de\s+medicações\s+prévias/concomitantes\s+e\s+uso\s+de\s+terapia\s+hormonal\s+da\s+menopausa",
-        "redcap_check_field": "medicacao_dt",
-        "redcap_date_field": "medicacao_dt"
+        "redcap_check_field": "revisao_dados_q15",
+        "redcap_date_field": "revisao_dados_dt"
     },
     {
         #12
